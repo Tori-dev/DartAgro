@@ -17,3 +17,15 @@
   }
 }
 
+@layer utilities {
+  /* Text reveal animation support */
+  span.overflow-hidden {
+    display: inline-block;
+  }
+  
+  span.overflow-hidden > span {
+    display: inline-block;
+    will-change: transform;
+  }
+}
+
