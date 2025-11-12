@@ -40,10 +40,7 @@
               </p>
 
               <div class="mt-10 flex items-center gap-4">
-                <a
-                  href=""
-                  class="inline-flex items-center group relative pl-6"
-                >
+                <a href="" class="inline-flex items-center group relative pl-6">
                   <span class="sr-only">Explore Our Machines</span>
                   <span
                     class="grid place-items-center h-10 w-10 rounded-full bg-black ring-1 ring-white/20 transition group-hover:ring-white/40 absolute -bottom-3 left-0"
@@ -212,30 +209,43 @@
       </section>
 
       <section id="precision-showcase" class="bg-white" data-precision-section>
-        <div class="max-w-[1270px] mx-auto px-4">
+        <div class="max-w-[1270px] mx-auto px-4 pb-10 lg:pb-14">
           <div
-              class="flex items-center gap-3 bg-gray-100 p-2 rounded-full w-fit"
-              data-precision-badge
-            >
-              <span
-                class="h-3 w-3 rounded-full bg-accent"
-                aria-hidden="true"
-              ></span>
-              <span class="text-xs font-medium uppercase text-gray-900">
-                precision power for every farm.
-              </span>
-            </div>
+            class="flex items-center gap-3 bg-gray-100 p-2 rounded-full w-fit"
+            data-precision-badge
+          >
+            <span
+              class="h-3 w-3 rounded-full bg-accent"
+              aria-hidden="true"
+            ></span>
+            <span class="text-xs font-medium uppercase text-gray-900">
+              precision power for every farm.
+            </span>
+          </div>
 
-            <div class="grid lg:grid-cols-3 gap-2 mt-4">
-              <div>
-                <img data-precision-image src="./src/assets/imgs/precision-1.webp" alt="machinery">
-              </div>
-              <div>
-                <img data-precision-image src="./src/assets/imgs/precision-2.webp" alt="machinery">
-                <div class="space-y-2 mt-6">
-                  <h2 class="text-2xl font-semibold" data-precision-heading>Tractors & Harvesters</h2>
-                  <p data-precision-paragraph>Rugged, intelligent, and optimized for maximum yield efficiency.</p>
-                  <a
+          <div class="grid lg:grid-cols-3 gap-2 mt-4">
+            <div class="hidden lg:block">
+              <img
+                data-precision-image
+                src="./src/assets/imgs/precision-1.webp"
+                alt="machinery"
+              />
+            </div>
+            <div>
+              <img
+                data-precision-image
+                src="./src/assets/imgs/precision-2.webp"
+                alt="machinery"
+              />
+              <div class="space-y-2 mt-6">
+                <h2 class="text-2xl font-semibold" data-precision-heading>
+                  Tractors & Harvesters
+                </h2>
+                <p data-precision-paragraph>
+                  Rugged, intelligent, and optimized for maximum yield
+                  efficiency.
+                </p>
+                <a
                   href=""
                   data-animated-button="precision-range"
                   class="group inline-flex items-center gap-3 rounded-full border border-gray-300 bg-accent px-6 sm:px-8 py-3 mt-2 text-sm sm:text-base font-medium text-gray-900 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.2)] transition hover:border-gray-400"
@@ -252,12 +262,126 @@
                     />
                   </span>
                 </a>
-                </div>
-              </div>
-              <div>
-                <img data-precision-image src="./src/assets/imgs/precision-3.webp" alt="machinery">
               </div>
             </div>
+            <div class="hidden lg:block">
+              <img
+                data-precision-image
+                src="./src/assets/imgs/precision-3.webp"
+                alt="machinery"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="technology-innovation"
+        class="bg-secondary py-20 sm:py-24 lg:py-28"
+        data-technology-section
+      >
+        <div class="max-w-[1270px] mx-auto px-4">
+          <div
+            class="flex items-center gap-3 rounded-full bg-accent/20 px-4 py-2 w-fit"
+            data-technology-badge
+          >
+            <span class="h-2.5 w-2.5 rounded-full bg-accent"></span>
+            <span
+              class="text-xs font-medium uppercase tracking-[0.3em] text-primary"
+            >
+              Technology &amp; Innovation
+            </span>
+          </div>
+          <div
+            class="grid gap-16 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start mt-4"
+          >
+            <h2
+              class="text-4xl font-semibold leading-tight text-primary"
+              data-technology-heading
+            >
+              Smart Technology Meets Solid Engineering.
+            </h2>
+
+            <p
+              class="text-base leading-relaxed text-primary/80 sm:text-lg max-w-xl"
+              data-technology-description
+            >
+              We’re redefining agriculture through technology — integrating IoT
+              connectivity, automation, and AI-driven analytics into every
+              machine. Our systems collect real-time field data, analyze
+              performance, and help farmers make informed decisions that
+              increase output while conserving resources.
+            </p>
+
+            <div class="mt-2 flex-col justify-end h-full hidden lg:flex">
+              <img
+                src="/src/assets/imgs/technology.webp"
+                alt="Aerial view of smart farming equipment"
+                class="max-h-[400px] max-w-[500px] rounded-3xl object-cover shadow-[0_25px_60px_-25px_rgba(0,0,0,0.35)]"
+                data-technology-image
+              />
+            </div>
+
+            <div class="flex flex-col gap-12 mt-5">
+              <div class="space-y-8" data-technology-features>
+                <div
+                  class="border-b border-primary/20 pb-6 last:border-none last:pb-0"
+                  data-technology-feature
+                  data-image-src="/src/assets/imgs/technology.webp"
+                  data-image-alt="Autonomous farming operations"
+                >
+                  <h3 class="text-xl font-semibold text-primary sm:text-2xl">
+                    Autonomous Operations
+                  </h3>
+                  <p class="mt-2 text-sm text-primary/70 sm:text-base">
+                    Self-driving tractors for 24/7 precision.
+                  </p>
+                </div>
+
+                <div
+                  class="border-b border-primary/20 pb-6 last:border-none last:pb-0"
+                  data-technology-feature
+                  data-image-src="/src/assets/imgs/precision-1.webp"
+                  data-image-alt="Connected equipment dashboard"
+                >
+                  <h3 class="text-xl font-semibold text-primary sm:text-2xl">
+                    IoT Integration
+                  </h3>
+                  <p class="mt-2 text-sm text-primary/70 sm:text-base">
+                    Monitor and control equipment remotely.
+                  </p>
+                </div>
+
+                <div
+                  class="border-b border-primary/20 pb-6 last:border-none last:pb-0"
+                  data-technology-feature
+                  data-image-src="/src/assets/imgs/precision-2.webp"
+                  data-image-alt="AI-driven analytics interface"
+                >
+                  <h3 class="text-xl font-semibold text-primary sm:text-2xl">
+                    AI Analytics
+                  </h3>
+                  <p class="mt-2 text-sm text-primary/70 sm:text-base">
+                    Predictive insights for better yield and resource use.
+                  </p>
+                </div>
+
+                <div
+                  class="pb-0"
+                  data-technology-feature
+                  data-image-src="/src/assets/imgs/precision-3.webp"
+                  data-image-alt="Sustainable engineering machinery"
+                >
+                  <h3 class="text-xl font-semibold text-primary sm:text-2xl">
+                    Green Engineering
+                  </h3>
+                  <p class="mt-2 text-sm text-primary/70 sm:text-base">
+                    Lower emissions, higher efficiency.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

@@ -390,6 +390,169 @@ function animatePrecisionShowcase() {
   }
 }
 
+function animateTechnologySection() {
+  const section = document.querySelector("[data-technology-section]");
+  if (!section) return;
+
+  const badge = section.querySelector("[data-technology-badge]");
+  const heading = section.querySelector("[data-technology-heading]");
+  const description = section.querySelector("[data-technology-description]");
+  const image = section.querySelector("[data-technology-image]");
+  const featuresWrapper = section.querySelector("[data-technology-features]");
+  const features = section.querySelectorAll("[data-technology-feature]");
+
+  const headingWords = splitTextIntoWords(heading);
+  const descriptionWords = splitTextIntoWords(description);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 70%",
+      once: true,
+    },
+  });
+
+  if (badge) {
+    tl.from(badge, {
+      y: 18,
+      opacity: 0,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  }
+
+  if (headingWords.length) {
+    tl.from(
+      headingWords,
+      {
+        y: "100%",
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.04,
+        ease: "power3.out",
+      },
+      badge ? "-=0.1" : 0
+    );
+  }
+
+  if (descriptionWords.length) {
+    tl.from(
+      descriptionWords,
+      {
+        y: "110%",
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.03,
+        ease: "power2.out",
+      },
+      "-=0.25"
+    );
+  }
+
+  if (image) {
+    tl.from(
+      image,
+      {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+      },
+      "<0.1"
+    );
+  }
+
+  if (features.length) {
+    tl.from(
+      features,
+      {
+        y: 24,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+      },
+      image ? "-=0.2" : "-=0.1"
+    );
+  }
+
+  if (!image || !features.length || section.dataset.techInteractionBound === "true") {
+    return;
+  }
+
+  section.dataset.techInteractionBound = "true";
+
+  const defaultImageSrc = image.getAttribute("src");
+  const defaultImageAlt = image.getAttribute("alt") || "";
+  let activeImageSrc = defaultImageSrc;
+  let activeAnimation = null;
+
+  const swapImage = (nextSrc, nextAlt) => {
+    const targetSrc = nextSrc || defaultImageSrc;
+    const targetAlt = nextAlt || defaultImageAlt;
+
+    if (!targetSrc || targetSrc === activeImageSrc) {
+      return;
+    }
+
+    if (activeAnimation) {
+      activeAnimation.kill();
+    }
+
+    activeAnimation = gsap
+      .timeline()
+      .to(image, {
+        opacity: 0,
+        scale: 0.97,
+        duration: 0.25,
+        ease: "power2.out",
+      })
+      .add(() => {
+        image.setAttribute("src", targetSrc);
+        image.setAttribute("alt", targetAlt);
+        activeImageSrc = targetSrc;
+      })
+      .fromTo(
+        image,
+        {
+          opacity: 0,
+          scale: 1.03,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.35,
+          ease: "power2.out",
+        }
+      );
+  };
+
+  const resetImage = () => swapImage(defaultImageSrc, defaultImageAlt);
+
+  features.forEach((feature) => {
+    const hoverSrc = feature.dataset.imageSrc;
+    const hoverAlt = feature.dataset.imageAlt;
+
+    if (hoverSrc) {
+      const preloader = new Image();
+      preloader.src = hoverSrc;
+    }
+
+    const handleEnter = () => swapImage(hoverSrc, hoverAlt);
+    feature.addEventListener("mouseenter", handleEnter);
+    feature.addEventListener("focus", handleEnter);
+  });
+
+  if (featuresWrapper) {
+    featuresWrapper.addEventListener("mouseleave", resetImage);
+    featuresWrapper.addEventListener("focusout", (event) => {
+      if (!featuresWrapper.contains(event.relatedTarget)) {
+        resetImage();
+      }
+    });
+  }
+}
+
 function animateStatsSection() {
   const cards = document.querySelectorAll("#impact-stats .stats-card");
   if (!cards.length) return;
@@ -470,6 +633,7 @@ function initPageAnimations() {
   animateStatsSection();
   animateAboutSection();
   animatePrecisionShowcase();
+  animateTechnologySection();
   setupAnimatedButtons();
 }
 
