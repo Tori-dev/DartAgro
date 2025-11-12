@@ -224,10 +224,14 @@ function formatStatValue(value, format) {
   const rounded = Math.round(value);
   if (format === "abbreviate") {
     if (rounded >= 1_000_000_000) {
-      return `${(rounded / 1_000_000_000).toFixed(rounded % 1_000_000_000 === 0 ? 0 : 1)}B`;
+      return `${(rounded / 1_000_000_000).toFixed(
+        rounded % 1_000_000_000 === 0 ? 0 : 1
+      )}B`;
     }
     if (rounded >= 1_000_000) {
-      return `${(rounded / 1_000_000).toFixed(rounded % 1_000_000 === 0 ? 0 : 1)}M`;
+      return `${(rounded / 1_000_000).toFixed(
+        rounded % 1_000_000 === 0 ? 0 : 1
+      )}M`;
     }
     if (rounded >= 1_000) {
       return `${(rounded / 1_000).toFixed(rounded % 1_000 === 0 ? 0 : 1)}k`;
@@ -298,6 +302,94 @@ function animateAboutSection() {
   }
 }
 
+function animatePrecisionShowcase() {
+  const section = document.querySelector("[data-precision-section]");
+  if (!section) return;
+
+  const badge = section.querySelector("[data-precision-badge]");
+  const images = section.querySelectorAll("[data-precision-image]");
+  const heading = section.querySelector("[data-precision-heading]");
+  const paragraph = section.querySelector("[data-precision-paragraph]");
+  const button = section.querySelector("[data-animated-button='precision-range']");
+
+  const headingWords = splitTextIntoWords(heading);
+  const paragraphWords = splitTextIntoWords(paragraph);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 70%",
+      once: true,
+    },
+  });
+
+  if (badge) {
+    tl.from(badge, {
+      y: 16,
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  }
+
+  if (images.length) {
+    tl.from(
+      images,
+      {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+      },
+      badge ? "-=0.2" : 0
+    );
+  }
+
+  if (headingWords.length) {
+    tl.from(
+      headingWords,
+      {
+        y: "100%",
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.04,
+        ease: "power3.out",
+      },
+      "-=0.3"
+    );
+  }
+
+  if (paragraphWords.length) {
+    tl.from(
+      paragraphWords,
+      {
+        y: "110%",
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.03,
+        ease: "power2.out",
+      },
+      "-=0.25"
+    );
+  }
+
+  if (button) {
+    bindButtonInteractions(button);
+    tl.from(
+      button,
+      {
+        opacity: 0,
+        y: 24,
+        duration: 0.6,
+        ease: "power2.out",
+        immediateRender: false,
+      },
+      "-=0.2"
+    );
+  }
+}
+
 function animateStatsSection() {
   const cards = document.querySelectorAll("#impact-stats .stats-card");
   if (!cards.length) return;
@@ -356,10 +448,16 @@ function animateStatsSection() {
           ease: "power1.out",
           onUpdate: () => {
             const currentValue = target * counter.progress;
-            numberEl.textContent = `${formatStatValue(currentValue, format)}${suffix}`;
+            numberEl.textContent = `${formatStatValue(
+              currentValue,
+              format
+            )}${suffix}`;
           },
           onComplete: () => {
-            numberEl.textContent = `${formatStatValue(target, format)}${suffix}`;
+            numberEl.textContent = `${formatStatValue(
+              target,
+              format
+            )}${suffix}`;
           },
         },
         "<"
@@ -371,6 +469,7 @@ function initPageAnimations() {
   animateHeroText();
   animateStatsSection();
   animateAboutSection();
+  animatePrecisionShowcase();
   setupAnimatedButtons();
 }
 
