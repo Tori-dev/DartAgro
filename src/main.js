@@ -310,7 +310,9 @@ function animatePrecisionShowcase() {
   const images = section.querySelectorAll("[data-precision-image]");
   const heading = section.querySelector("[data-precision-heading]");
   const paragraph = section.querySelector("[data-precision-paragraph]");
-  const button = section.querySelector("[data-animated-button='precision-range']");
+  const button = section.querySelector(
+    "[data-animated-button='precision-range']"
+  );
 
   const headingWords = splitTextIntoWords(heading);
   const paragraphWords = splitTextIntoWords(paragraph);
@@ -476,7 +478,11 @@ function animateTechnologySection() {
     );
   }
 
-  if (!image || !features.length || section.dataset.techInteractionBound === "true") {
+  if (
+    !image ||
+    !features.length ||
+    section.dataset.techInteractionBound === "true"
+  ) {
     return;
   }
 
@@ -551,6 +557,314 @@ function animateTechnologySection() {
       }
     });
   }
+}
+
+function animateSustainabilitySection() {
+  const section = document.querySelector("[data-sustainability-section]");
+  if (!section) return;
+
+  const badge = section.querySelector("[data-sustainability-badge]");
+  const heading = section.querySelector("[data-sustainability-heading]");
+  const description = section.querySelector(
+    "[data-sustainability-description]"
+  );
+  const cards = section.querySelectorAll("[data-sustainability-card]");
+
+  const headingWords = splitTextIntoWords(heading);
+  const descriptionWords = splitTextIntoWords(description);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 70%",
+      once: true,
+    },
+  });
+
+  if (badge) {
+    tl.from(badge, {
+      y: 18,
+      opacity: 0,
+      duration: 0.45,
+      ease: "power2.out",
+    });
+  }
+
+  if (headingWords.length) {
+    tl.from(
+      headingWords,
+      {
+        y: "105%",
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.04,
+        ease: "power3.out",
+      },
+      badge ? "-=0.1" : 0
+    );
+  }
+
+  if (descriptionWords.length) {
+    tl.from(
+      descriptionWords,
+      {
+        y: "115%",
+        opacity: 0,
+        duration: 0.55,
+        stagger: 0.03,
+        ease: "power2.out",
+      },
+      "-=0.25"
+    );
+  }
+
+  if (cards.length) {
+    tl.from(
+      cards,
+      {
+        y: 32,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: "power3.out",
+      },
+      "-=0.2"
+    );
+
+    cards.forEach((card) => {
+      if (card.dataset.sustainabilityCardBound === "true") return;
+      card.dataset.sustainabilityCardBound = "true";
+
+      const image = card.querySelector("img");
+      if (!image) return;
+
+      card.addEventListener("mouseenter", () => {
+        gsap.to(image, {
+          scale: 1.04,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(image, {
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      });
+    });
+  }
+}
+
+function animateGlobalPresenceSection() {
+  const section = document.querySelector("[data-global-section]");
+  if (!section) return;
+
+  const badge = section.querySelector("[data-global-badge]");
+  const heading = section.querySelector("[data-global-heading]");
+  const description = section.querySelector("[data-global-description]");
+  const items = section.querySelectorAll("[data-global-item]");
+
+  const headingWords = splitTextIntoWords(heading);
+  const descriptionWords = splitTextIntoWords(description);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 70%",
+      once: true,
+    },
+  });
+
+  if (badge) {
+    tl.from(badge, {
+      y: 18,
+      opacity: 0,
+      duration: 0.45,
+      ease: "power2.out",
+    });
+  }
+
+  if (headingWords.length) {
+    tl.from(
+      headingWords,
+      {
+        y: "100%",
+        opacity: 0,
+        duration: 0.75,
+        stagger: 0.04,
+        ease: "power3.out",
+      },
+      badge ? "-=0.1" : 0
+    );
+  }
+
+  if (descriptionWords.length) {
+    tl.from(
+      descriptionWords,
+      {
+        y: "115%",
+        opacity: 0,
+        duration: 0.55,
+        stagger: 0.03,
+        ease: "power2.out",
+      },
+      "-=0.25"
+    );
+  }
+
+  if (items.length) {
+    tl.from(
+      items,
+      {
+        y: 32,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+      },
+      "-=0.2"
+    );
+  }
+}
+
+function animateNewsSection() {
+  const section = document.querySelector("[data-news-section]");
+  if (!section) return;
+
+  const badge = section.querySelector("[data-news-badge]");
+  const heading = section.querySelector("[data-news-heading]");
+  const description = section.querySelector("[data-news-description]");
+  const items = Array.from(section.querySelectorAll("[data-news-item]"));
+
+  const headingWords = splitTextIntoWords(heading);
+  const descriptionWords = splitTextIntoWords(description);
+
+  const masterTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 70%",
+      once: true,
+    },
+  });
+
+  if (badge) {
+    masterTimeline.from(badge, {
+      y: 16,
+      opacity: 0,
+      duration: 0.45,
+      ease: "power2.out",
+    });
+  }
+
+  if (headingWords.length) {
+    masterTimeline.from(
+      headingWords,
+      {
+        y: "105%",
+        opacity: 0,
+        duration: 0.75,
+        stagger: 0.04,
+        ease: "power3.out",
+      },
+      badge ? "-=0.1" : 0
+    );
+  }
+
+  if (descriptionWords.length) {
+    masterTimeline.from(
+      descriptionWords,
+      {
+        y: "115%",
+        opacity: 0,
+        duration: 0.55,
+        stagger: 0.03,
+        ease: "power2.out",
+      },
+      "-=0.25"
+    );
+  }
+
+  items.forEach((item) => {
+    const figure = item.querySelector("figure");
+    const image = figure ? figure.querySelector("img") : null;
+    const title = item.querySelector("[data-news-item-title]");
+    const copy = item.querySelector("[data-news-item-description]");
+    const date = item.querySelector("[data-news-item-date]");
+
+    const titleWords = splitTextIntoWords(title);
+    const copyWords = splitTextIntoWords(copy);
+
+    const itemTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: item,
+        start: "top 80%",
+        once: true,
+      },
+    });
+
+    itemTimeline.from(item, {
+      opacity: 0,
+      y: 36,
+      duration: 0.6,
+      ease: "power3.out",
+    });
+
+    if (image) {
+      itemTimeline.from(
+        image,
+        {
+          opacity: 1,
+          scale: 1.05,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.35"
+      );
+    }
+
+    if (titleWords.length) {
+      itemTimeline.from(
+        titleWords,
+        {
+          y: "100%",
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.04,
+          ease: "power3.out",
+        },
+        image ? "-=0.3" : "-=0.25"
+      );
+    }
+
+    if (copyWords.length) {
+      itemTimeline.from(
+        copyWords,
+        {
+          y: "115%",
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.025,
+          ease: "power2.out",
+        },
+        "-=0.25"
+      );
+    }
+
+    if (date) {
+      itemTimeline.from(
+        date,
+        {
+          y: 14,
+          opacity: 0,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
+    }
+  });
 }
 
 function animateStatsSection() {
@@ -634,6 +948,9 @@ function initPageAnimations() {
   animateAboutSection();
   animatePrecisionShowcase();
   animateTechnologySection();
+  animateSustainabilitySection();
+  animateGlobalPresenceSection();
+  animateNewsSection();
   setupAnimatedButtons();
 }
 
