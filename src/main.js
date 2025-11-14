@@ -31,14 +31,7 @@ requestAnimationFrame(raf);
 // Initialize GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-// Initialize header
-const app = document.querySelector("#navbar");
-app.innerHTML = `
-    <header id="header"></header>
-
-
-`;
-
+// Initialize header interactions
 initializeHeader();
 
 function splitTextIntoWords(element) {
