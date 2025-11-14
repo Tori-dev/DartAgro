@@ -6,7 +6,7 @@ import { initializeHeader } from "./components/header.js";
 
 // Initialize Lenis smooth scroll
 const lenis = new Lenis({
-  duration: 1.2,
+  duration: 0.9,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   direction: "vertical",
   gestureDirection: "vertical",
@@ -69,7 +69,7 @@ function bindButtonInteractions(button) {
   button.addEventListener("mouseenter", () => {
     gsap.to(button, {
       scale: 1.05,
-      duration: 0.2,
+      duration: 0.15,
       ease: "power2.out",
     });
   });
@@ -77,7 +77,7 @@ function bindButtonInteractions(button) {
   button.addEventListener("mouseleave", () => {
     gsap.to(button, {
       scale: 1,
-      duration: 0.2,
+      duration: 0.15,
       ease: "power2.out",
     });
   });
@@ -86,7 +86,7 @@ function bindButtonInteractions(button) {
   button.addEventListener("mousedown", () => {
     gsap.to(button, {
       scale: 0.95,
-      duration: 0.1,
+      duration: 0.08,
       ease: "power2.out",
     });
   });
@@ -94,7 +94,7 @@ function bindButtonInteractions(button) {
   button.addEventListener("mouseup", () => {
     gsap.to(button, {
       scale: 1.05,
-      duration: 0.2,
+      duration: 0.15,
       ease: "power2.out",
     });
   });
@@ -126,7 +126,7 @@ function animateHeroText() {
     {
       y: "0%",
       opacity: 1,
-      duration: 0.8,
+      duration: 0.6,
       stagger: 0.05,
       ease: "power3.out",
       delay: 0.3,
@@ -144,7 +144,7 @@ function animateHeroText() {
     {
       y: "0%",
       opacity: 1,
-      duration: 0.6,
+      duration: 0.45,
       stagger: 0.03,
       ease: "power3.out",
       delay: 0.8,
@@ -165,7 +165,7 @@ function animateHeroText() {
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.6,
         ease: "power3.out",
         delay: 1.2,
       }
@@ -186,7 +186,7 @@ function animateHeroText() {
       {
         opacity: 1,
         scale: 1,
-        duration: 0.6,
+        duration: 0.45,
         ease: "back.out(1.7)",
         delay: 1.4,
       }
@@ -197,7 +197,7 @@ function animateHeroText() {
       gsap.to(arrowButton.querySelector("span"), {
         scale: 1.1,
         rotation: 5,
-        duration: 0.2,
+        duration: 0.15,
         ease: "power2.out",
       });
     });
@@ -206,7 +206,7 @@ function animateHeroText() {
       gsap.to(arrowButton.querySelector("span"), {
         scale: 1,
         rotation: 0,
-        duration: 0.2,
+        duration: 0.15,
         ease: "power2.out",
       });
     });
@@ -257,7 +257,7 @@ function animateAboutSection() {
     tl.from(badge, {
       y: 20,
       opacity: 0,
-      duration: 0.5,
+      duration: 0.38,
       ease: "power2.out",
     });
   }
@@ -268,7 +268,7 @@ function animateAboutSection() {
       {
         y: "100%",
         opacity: 0,
-        duration: 0.8,
+        duration: 0.6,
         stagger: 0.04,
         ease: "power3.out",
       },
@@ -282,7 +282,7 @@ function animateAboutSection() {
       {
         y: "120%",
         opacity: 0,
-        duration: 0.6,
+        duration: 0.45,
         stagger: 0.02,
         ease: "power2.out",
       },
@@ -322,7 +322,7 @@ function animatePrecisionShowcase() {
     tl.from(badge, {
       y: 16,
       opacity: 0,
-      duration: 0.5,
+      duration: 0.38,
       ease: "power2.out",
     });
   }
@@ -333,7 +333,7 @@ function animatePrecisionShowcase() {
       {
         y: 40,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.6,
         stagger: 0.1,
         ease: "power3.out",
       },
@@ -347,7 +347,7 @@ function animatePrecisionShowcase() {
       {
         y: "100%",
         opacity: 0,
-        duration: 0.6,
+        duration: 0.45,
         stagger: 0.04,
         ease: "power3.out",
       },
@@ -361,7 +361,7 @@ function animatePrecisionShowcase() {
       {
         y: "110%",
         opacity: 0,
-        duration: 0.5,
+        duration: 0.38,
         stagger: 0.03,
         ease: "power2.out",
       },
@@ -376,7 +376,7 @@ function animatePrecisionShowcase() {
       {
         opacity: 0,
         y: 24,
-        duration: 0.6,
+        duration: 0.45,
         ease: "power2.out",
         immediateRender: false,
       },
@@ -411,7 +411,7 @@ function animateTechnologySection() {
     tl.from(badge, {
       y: 18,
       opacity: 0,
-      duration: 0.4,
+      duration: 0.3,
       ease: "power2.out",
     });
   }
@@ -422,7 +422,7 @@ function animateTechnologySection() {
       {
         y: "100%",
         opacity: 0,
-        duration: 0.7,
+        duration: 0.53,
         stagger: 0.04,
         ease: "power3.out",
       },
@@ -436,7 +436,7 @@ function animateTechnologySection() {
       {
         y: "110%",
         opacity: 0,
-        duration: 0.5,
+        duration: 0.38,
         stagger: 0.03,
         ease: "power2.out",
       },
@@ -450,7 +450,7 @@ function animateTechnologySection() {
       {
         y: 30,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.53,
         ease: "power3.out",
       },
       "<0.1"
@@ -463,7 +463,7 @@ function animateTechnologySection() {
       {
         y: 24,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.45,
         stagger: 0.1,
         ease: "power2.out",
       },
@@ -503,7 +503,7 @@ function animateTechnologySection() {
       .to(image, {
         opacity: 0,
         scale: 0.97,
-        duration: 0.25,
+        duration: 0.19,
         ease: "power2.out",
       })
       .add(() => {
@@ -520,7 +520,7 @@ function animateTechnologySection() {
         {
           opacity: 1,
           scale: 1,
-          duration: 0.35,
+          duration: 0.26,
           ease: "power2.out",
         }
       );
@@ -578,7 +578,7 @@ function animateSustainabilitySection() {
     tl.from(badge, {
       y: 18,
       opacity: 0,
-      duration: 0.45,
+      duration: 0.34,
       ease: "power2.out",
     });
   }
@@ -589,7 +589,7 @@ function animateSustainabilitySection() {
       {
         y: "105%",
         opacity: 0,
-        duration: 0.7,
+        duration: 0.53,
         stagger: 0.04,
         ease: "power3.out",
       },
@@ -603,7 +603,7 @@ function animateSustainabilitySection() {
       {
         y: "115%",
         opacity: 0,
-        duration: 0.55,
+        duration: 0.41,
         stagger: 0.03,
         ease: "power2.out",
       },
@@ -617,7 +617,7 @@ function animateSustainabilitySection() {
       {
         y: 32,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.53,
         stagger: 0.12,
         ease: "power3.out",
       },
@@ -634,7 +634,7 @@ function animateSustainabilitySection() {
       card.addEventListener("mouseenter", () => {
         gsap.to(image, {
           scale: 1.04,
-          duration: 0.4,
+          duration: 0.3,
           ease: "power2.out",
         });
       });
@@ -642,7 +642,7 @@ function animateSustainabilitySection() {
       card.addEventListener("mouseleave", () => {
         gsap.to(image, {
           scale: 1,
-          duration: 0.4,
+          duration: 0.3,
           ease: "power2.out",
         });
       });
@@ -674,7 +674,7 @@ function animateGlobalPresenceSection() {
     tl.from(badge, {
       y: 18,
       opacity: 0,
-      duration: 0.45,
+      duration: 0.34,
       ease: "power2.out",
     });
   }
@@ -685,7 +685,7 @@ function animateGlobalPresenceSection() {
       {
         y: "100%",
         opacity: 0,
-        duration: 0.75,
+        duration: 0.56,
         stagger: 0.04,
         ease: "power3.out",
       },
@@ -699,7 +699,7 @@ function animateGlobalPresenceSection() {
       {
         y: "115%",
         opacity: 0,
-        duration: 0.55,
+        duration: 0.41,
         stagger: 0.03,
         ease: "power2.out",
       },
@@ -713,7 +713,7 @@ function animateGlobalPresenceSection() {
       {
         y: 32,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.6,
         stagger: 0.1,
         ease: "power3.out",
       },
@@ -746,7 +746,7 @@ function animateNewsSection() {
     masterTimeline.from(badge, {
       y: 16,
       opacity: 0,
-      duration: 0.45,
+      duration: 0.34,
       ease: "power2.out",
     });
   }
@@ -757,7 +757,7 @@ function animateNewsSection() {
       {
         y: "105%",
         opacity: 0,
-        duration: 0.75,
+        duration: 0.56,
         stagger: 0.04,
         ease: "power3.out",
       },
@@ -771,7 +771,7 @@ function animateNewsSection() {
       {
         y: "115%",
         opacity: 0,
-        duration: 0.55,
+        duration: 0.41,
         stagger: 0.03,
         ease: "power2.out",
       },
@@ -800,7 +800,7 @@ function animateNewsSection() {
     itemTimeline.from(item, {
       opacity: 0,
       y: 36,
-      duration: 0.6,
+      duration: 0.45,
       ease: "power3.out",
     });
 
@@ -810,7 +810,7 @@ function animateNewsSection() {
         {
           opacity: 1,
           scale: 1.05,
-          duration: 0.6,
+          duration: 0.45,
           ease: "power2.out",
         },
         "-=0.35"
@@ -823,7 +823,7 @@ function animateNewsSection() {
         {
           y: "100%",
           opacity: 0,
-          duration: 0.6,
+          duration: 0.45,
           stagger: 0.04,
           ease: "power3.out",
         },
@@ -837,7 +837,7 @@ function animateNewsSection() {
         {
           y: "115%",
           opacity: 0,
-          duration: 0.5,
+          duration: 0.38,
           stagger: 0.025,
           ease: "power2.out",
         },
@@ -851,7 +851,7 @@ function animateNewsSection() {
         {
           y: 14,
           opacity: 0,
-          duration: 0.4,
+          duration: 0.3,
           ease: "power2.out",
         },
         "-=0.2"
@@ -887,7 +887,7 @@ function animateStatsSection() {
       .from(card, {
         y: 40,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.45,
         ease: "power3.out",
       })
       .from(
@@ -895,7 +895,7 @@ function animateStatsSection() {
         {
           yPercent: 40,
           opacity: 0,
-          duration: 0.6,
+          duration: 0.45,
           ease: "power2.out",
         },
         "-=0.3"
@@ -905,7 +905,7 @@ function animateStatsSection() {
         {
           yPercent: 40,
           opacity: 0,
-          duration: 0.5,
+          duration: 0.38,
           ease: "power2.out",
         },
         "<0.05"
@@ -914,7 +914,7 @@ function animateStatsSection() {
         counter,
         {
           progress: 1,
-          duration: 1.6,
+          duration: 1.2,
           ease: "power1.out",
           onUpdate: () => {
             const currentValue = target * counter.progress;
